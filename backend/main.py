@@ -5,10 +5,9 @@ import asyncio
 
 app = FastAPI(title="Hardware Telemetry API")
 
-# Allow the React frontend to communicate with this API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # In production, restrict this to your frontend domain
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -16,12 +15,7 @@ app.add_middleware(
 
 @app.get("/api/telemetry")
 async def get_telemetry():
-    """
-    Simulates fetching hardware telemetry data. 
-    Marked as 'async' to allow the event loop to handle other requests 
-    while this one processes, ensuring high throughput and low latency.
-    """
-    # Simulate a tiny micro-delay representing hardware sensor polling (1-5ms)
+    # simulating a micro-delay representing hardware sensor polling (1-5ms)
     await asyncio.sleep(random.uniform(0.001, 0.005))
     
     return {

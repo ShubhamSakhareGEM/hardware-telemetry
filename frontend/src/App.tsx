@@ -14,7 +14,7 @@ function App() {
 
   const fetchTelemetry = async () => {
     try {
-      // Fetching from the FastAPI backend
+      // fetching from the FastAPI backend
       const response = await fetch('http://127.0.0.1:8000/api/telemetry');
       if (!response.ok) throw new Error('Network response was not ok');
       const result = await response.json();
@@ -27,9 +27,9 @@ function App() {
   };
 
   useEffect(() => {
-    // Fetch immediately on mount
+    // fetch immediately on mount
     fetchTelemetry();
-    // Poll every 1 second
+    // poll every 1 second
     const interval = setInterval(fetchTelemetry, 1000);
     return () => clearInterval(interval);
   }, []);
