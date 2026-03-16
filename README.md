@@ -39,26 +39,26 @@ When building the API layer for a system that needs to be polled constantly, I k
 * **Stateless Execution:** I deliberately designed the endpoint to require no database lookups or session state checks, allowing it to process and return the telemetry data in just a few milliseconds.
 * **Efficient Polling:** In the React app, I utilized `useEffect` and a clean `setInterval` cleanup function to ensure the polling mechanism doesn't cause memory leaks or redundant network requests when the component re-renders.
 
-## How to Run My Code Locally
+## How to Run the Code Locally
 
 If you want to spin this up on your own machine, follow these steps.
 
 ### 1. Start the API (Backend)
 Open a terminal and run the following commands to start the FastAPI server:
-\`\`\`bash
+```bash
 cd backend
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload --port 8000
-\`\`\`
+```
 *The API will be live at `http://127.0.0.1:8000/api/telemetry`*
 
 ### 2. Start the Dashboard (Frontend)
 Open a second terminal window and run:
-\`\`\`bash
+```bash
 cd frontend
 npm install
 npm run dev
-\`\`\`
+```
 *Visit the local Vite link (usually `http://localhost:5173`) to view the live dashboard.*
